@@ -71,8 +71,9 @@ notebooks/   compact executable examples
 
 This is a source-preserving extraction of the FEA core from
 `mesh-to-graph` revision `3056ce219a72d0dd1bb62e34ec6c7f5fee25fd64`, with only
-package-import changes required by the new namespace. The original code is
-licensed under GPL-3.0-or-later, retained in [`LICENSE`](LICENSE).
+package-import changes required by the new namespace. The copyright holder
+releases this standalone package under the [MIT License](LICENSE). Historical
+source snapshots retain their original licence notices as provenance records.
 
 ## Contributing
 
