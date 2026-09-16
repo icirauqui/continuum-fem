@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "catalog_id": "puertolas2020_three_specimen_fff_ferruzzi",
+  "common": {
+    "role": "source-derived study-conditioned response candidates, not validated population tissue truth",
+    "material_class": "fea.four_fiber.FourFiberMaterial",
+    "normalization": "ferruzzi2011",
+    "activation": "untruncated",
+    "normalization_uncertainty": "Selected fixed Ferruzzi coefficient convention using exposed training evidence; historical HyperFit normalization remains unresolved. Printed Puertolas Eq5 gives twice this ground/fiber energy for the same numerical coefficient values.",
+    "parameter_refitting": false,
+    "units": {
+      "matrix_coefficient": "Pa",
+      "axial_k1": "Pa",
+      "circumferential_k1": "Pa",
+      "diagonal_k1": "Pa per each diagonal family",
+      "bulk": "Pa, mandatory caller assignment",
+      "k2": "dimensionless",
+      "theta": "radians from circumferential"
+    },
+    "reference_axes": [
+      "circumferential",
+      "axial",
+      "thickness"
+    ],
+    "family_mapping": [
+      "axial",
+      "circumferential",
+      "positive_theta_diagonal",
+      "negative_theta_diagonal"
+    ],
+    "bulk_policy": {
+      "required_explicitly": true,
+      "default": null,
+      "empirically_identified": false,
+      "meaning": "Numerical finite-J volumetric extension or mixed compressibility parameter; cannot infer from source exact incompressibility."
+    },
+    "source_protocol": {
+      "species": "porcine",
+      "sex": "female",
+      "source_cohort_size": 5,
+      "source_age_months": [
+        5,
+        6
+      ],
+      "source_weight_kg": [
+        95,
+        105
+      ],
+      "conditioning": "excised, previously frozen at -80C, thawed; tested immersed in physiological saline",
+      "test_temperature_celsius": 37,
+      "reported_nominal_stress_rate_Pa_per_s": 2000,
+      "rate_is_approximate": true,
+      "validated_rate_interval_Pa_per_s": null,
+      "measured_strain_rate_per_s": null,
+      "source_maximum_nominal_stress_Pa": 60000,
+      "cycles_per_ratio": 5,
+      "analyzed_cycle": 5,
+      "history": "Repeated loading-unloading; permanent stretch and preconditioning softening reported; residual stretch removed by an unspecified operation. Hysteresis omitted from the fitted hyperelastic law.",
+      "reference_reset_algorithm": null,
+      "synchronized_loading_unloading_input": null,
+      "source_history_ratio_order_as_listed": [
+        [
+          1,
+          1
+        ],
+        [
+          0.75,
+          1
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0.75
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "source_history_order_caveat": "Listed protocol sequence is not a synchronized machine-readable specimen loading history; dwell and reference-reset implementation remain unspecified.",
+      "source_section_identifiers": [
+        "2.2 testing protocol",
+        "3.1 biaxial behavior"
+      ]
+    },
+    "evidence_scope": {
+      "workspace_dominant_stress_support_Pa": [
+        10000,
+        20000,
+        30000,
+        40000
+      ],
+      "source_fit_stress_measure": "first Piola-Kirchhoff / engineering nominal stress",
+      "source_material_constraint": "exact incompressibility with planar homogeneous biaxial idealization",
+      "temporal_support": "Approximate conditioned quasi-static response under the one stated loading protocol; no validated rate range.",
+      "not_supported": [
+        "virgin loading response",
+        "preconditioning evolution",
+        "viscoelastic relaxation",
+        "creep",
+        "rate dependence",
+        "dissipation or hysteresis loops",
+        "active motility",
+        "failure or rupture",
+        "clinical human equivalence",
+        "donor population distribution",
+        "empirical volumetric response"
+      ],
+      "metric_definition": "Conservative graphical forward-stress RMSE bounds divided by mean applied nominal stress; partial differently sampled data, not source full-curve NRMS replay. Bounds are not confidence intervals.",
+      "pixel_membership_is": "exact graphical compatibility diagnostic, not material-adequacy pass criterion",
+      "blind_validation": false,
+      "retrospective_pass_threshold": null,
+      "known_extraction_exposure": "Initial panel-b crops displayed a narrow upper strip of lower model-comparison panels before trimming; no coordinates extracted from that strip.",
+      "population_warning": "Three regional specimen identities are not a fitted population distribution or verified independent donors."
+    },
+    "citations": [
+      {
+        "role": "porcine source coefficients and measured protocol",
+        "doi": "10.1016/j.jmbbm.2019.103507",
+        "url": "https://zaguan.unizar.es/record/97328/files/texto_completo.pdf",
+        "equation": "printed Eq5",
+        "tables": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "role": "implemented coefficient normalization",
+        "doi": "10.1098/rsif.2010.0299",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030820/",
+        "equations": [
+          "2.1",
+          "2.3",
+          "2.4"
+        ]
+      }
+    ],
+    "source_license": {
+      "retained_postprint_notice": "CC BY-NC-ND 3.0 ES",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/es/",
+      "raw_measurement_license_verified": false,
+      "scope_note": "Local source-parameter transcription is not blanket authorization to redistribute source graphics or raw measurements; retain citations and assess each distributed asset separately."
+    },
+    "workspace_evidence_reports": [
+      "docs/research/artifacts/paper0_extension_20260911/FFF_CONVENTION_DISCRIMINATOR.md",
+      "docs/research/artifacts/paper0_extension_20260911/FFF_LOADING_PATH_REPLICATION.md",
+      "docs/research/artifacts/paper0_extension_20260911/FOUR_FIBER_IMPLEMENTATION.md"
+    ],
+    "unit_conversion_policy": {
+      "canonical_stress_unit": "Pa",
+      "helper_stress_unit_Pa_default": 1,
+      "non_SI_construction": "Explicit named stress_unit_Pa; divide matrix_coefficient, all three k1 values and assigned bulk by stress_unit_Pa. Leave k2 and theta unchanged.",
+      "geometry_and_load_scaling": "Caller responsibility; never inferred by material helper."
+    }
+  },
+  "profiles": {
+    "puertolas2020_psiii_fff_ferruzzi": {
+      "specimen_id": "PSIII",
+      "source_region": "proximal_spiral_colon",
+      "source_table": 1,
+      "specimen_to_donor_mapping": "not established from retained source",
+      "material_parameters_without_bulk": {
+        "matrix_coefficient": 7355.0,
+        "axial_k1": 164900.0,
+        "axial_k2": 70.2312,
+        "circumferential_k1": 12543.0,
+        "circumferential_k2": 15.6364,
+        "diagonal_k1": 146479.0,
+        "diagonal_k2": 33.59,
+        "theta": 0.5639158813193679,
+        "normalization": "ferruzzi2011",
+        "activation": "untruncated"
+      },
+      "source_printed_theta_degrees": 32.31,
+      "evidence": {
+        "training": {
+          "role": "published author coefficients compared with exposed graphical training paths, no refit",
+          "ratios_circumferential_to_axial": [
+            [
+              1,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              1,
+              0.5
+            ]
+          ],
+          "accepted_directional_intervals": 16,
+          "paired_boxes": 4,
+          "nominal_NRMS_conservative_bounds": [
+            0.06237798975499432,
+            0.24576705388849193
+          ],
+          "pixel_membership_count": 8
+        },
+        "remaining_paths": {
+          "role": "outcome-aware within-study loading-path replication; published aggregate outcomes already known",
+          "ratios_circumferential_to_axial": [
+            [
+              0.75,
+              1
+            ],
+            [
+              1,
+              0.75
+            ]
+          ],
+          "accepted_directional_intervals": 14,
+          "paired_boxes": 6,
+          "nominal_NRMS_conservative_bounds": [
+            0.0326430697912573,
+            0.24397156612974857
+          ],
+          "pixel_membership_count": 7,
+          "unresolved_direction_count": 2,
+          "paired_nominal_stress_support": [
+            {
+              "ratio": [
+                0.75,
+                1.0
+              ],
+              "dominant_stress_pa": 20000
+            },
+            {
+              "ratio": [
+                0.75,
+                1.0
+              ],
+              "dominant_stress_pa": 30000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 10000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 20000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 30000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 40000
+            }
+          ]
+        }
+      }
+    },
+    "puertolas2020_dsi_fff_ferruzzi": {
+      "specimen_id": "DSI",
+      "source_region": "distal_spiral_colon",
+      "source_table": 2,
+      "specimen_to_donor_mapping": "not established from retained source",
+      "material_parameters_without_bulk": {
+        "matrix_coefficient": 4419.8,
+        "axial_k1": 53615.1,
+        "axial_k2": 15.317,
+        "circumferential_k1": 64211.0,
+        "circumferential_k2": 7.949,
+        "diagonal_k1": 67823.2,
+        "diagonal_k2": 41.769,
+        "theta": 0.831998454425697,
+        "normalization": "ferruzzi2011",
+        "activation": "untruncated"
+      },
+      "source_printed_theta_degrees": 47.67,
+      "evidence": {
+        "training": {
+          "role": "published author coefficients compared with exposed graphical training paths, no refit",
+          "ratios_circumferential_to_axial": [
+            [
+              1,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              1,
+              0.5
+            ]
+          ],
+          "accepted_directional_intervals": 14,
+          "paired_boxes": 2,
+          "nominal_NRMS_conservative_bounds": [
+            0.013805684103913552,
+            0.17063307829551946
+          ],
+          "pixel_membership_count": 9
+        },
+        "remaining_paths": {
+          "role": "outcome-aware within-study loading-path replication; published aggregate outcomes already known",
+          "ratios_circumferential_to_axial": [
+            [
+              0.75,
+              1
+            ],
+            [
+              1,
+              0.75
+            ]
+          ],
+          "accepted_directional_intervals": 12,
+          "paired_boxes": 4,
+          "nominal_NRMS_conservative_bounds": [
+            0.039382826774131734,
+            0.3288386203380143
+          ],
+          "pixel_membership_count": 3,
+          "unresolved_direction_count": 4,
+          "paired_nominal_stress_support": [
+            {
+              "ratio": [
+                0.75,
+                1.0
+              ],
+              "dominant_stress_pa": 30000
+            },
+            {
+              "ratio": [
+                0.75,
+                1.0
+              ],
+              "dominant_stress_pa": 40000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 10000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 20000
+            }
+          ]
+        }
+      }
+    },
+    "puertolas2020_dcii_fff_ferruzzi": {
+      "specimen_id": "DCII",
+      "source_region": "descending_colon",
+      "source_table": 3,
+      "specimen_to_donor_mapping": "not established from retained source",
+      "material_parameters_without_bulk": {
+        "matrix_coefficient": 7686.0,
+        "axial_k1": 61161.0,
+        "axial_k2": 34.992,
+        "circumferential_k1": 74834.0,
+        "circumferential_k2": 2.577,
+        "diagonal_k1": 54291.0,
+        "diagonal_k2": 51.576,
+        "theta": 0.823969939866523,
+        "normalization": "ferruzzi2011",
+        "activation": "untruncated"
+      },
+      "source_printed_theta_degrees": 47.21,
+      "evidence": {
+        "training": {
+          "role": "published author coefficients compared with exposed graphical training paths, no refit",
+          "ratios_circumferential_to_axial": [
+            [
+              1,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              1,
+              0.5
+            ]
+          ],
+          "accepted_directional_intervals": 15,
+          "paired_boxes": 3,
+          "nominal_NRMS_conservative_bounds": [
+            0.10912206396488852,
+            0.2763975895412573
+          ],
+          "pixel_membership_count": 4
+        },
+        "remaining_paths": {
+          "role": "outcome-aware within-study loading-path replication; published aggregate outcomes already known",
+          "ratios_circumferential_to_axial": [
+            [
+              0.75,
+              1
+            ],
+            [
+              1,
+              0.75
+            ]
+          ],
+          "accepted_directional_intervals": 12,
+          "paired_boxes": 4,
+          "nominal_NRMS_conservative_bounds": [
+            0.045259418337702716,
+            0.2138068458043789
+          ],
+          "pixel_membership_count": 6,
+          "unresolved_direction_count": 4,
+          "paired_nominal_stress_support": [
+            {
+              "ratio": [
+                0.75,
+                1.0
+              ],
+              "dominant_stress_pa": 40000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 10000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 30000
+            },
+            {
+              "ratio": [
+                1.0,
+                0.75
+              ],
+              "dominant_stress_pa": 40000
+            }
+          ]
+        }
+      }
+    }
+  },
+  "evidence_source_hashes": {
+    "experiments/artifacts/paper0_extension_20260911/mechanics/fff_source_replication/AUTHOR_PARAMETERS.json": "394ce99f8522f231cd2211c8d1407929dcd2c91929c426f56db98e66fff90322",
+    "experiments/artifacts/paper0_extension_20260911/mechanics/fff_convention_discriminator/RESULTS.json": "37143f0470645786487ac19a9b903c5fe70ce768a53388eeb1eb608788f864a0",
+    "experiments/artifacts/paper0_extension_20260911/mechanics/fff_path_replication/RESULTS.json": "dfde268373306130042323032c2afe8b46733cec3d1442a244153cbfc3137831"
+  }
+}
