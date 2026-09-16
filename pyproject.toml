@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "continuum-fem"
+version = "0.1.0"
+description = "Transparent finite-element tools for continuum mechanics"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+authors = [{ name = "Íñigo Cirauqui-Viloria", email = "icirauqui@gmail.com" }]
+dependencies = ["numpy>=2.0", "scipy>=1.12"]
+classifiers = [
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.optional-dependencies]
+mixed = ["scikit-fem>=11"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+notebooks = ["jupyterlab>=4", "matplotlib>=3.8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
